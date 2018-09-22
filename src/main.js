@@ -36,10 +36,34 @@ class Blockchain {
         newBlock.hash = newBlock.calculateHash();
         this.chain.push(newBlock);
     }
+
+    isChainValid() {
+        for (let i = 1; i < this.chain.length; i++) {
+            const currentBlock = this.chain[i];
+            const previousBlock = this.chain[i - 1];
+
+            if (currentBlock.hash !== currentBlock.calculateHash()) {
+                return false;
+            }
+
+            if (currentBlock.previousHash !== previousBlock.hash) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
 
 let EzBlock = new Blockchain;
 EzBlock.addBlock(new Block(1, Date.now(), {amount: 3}));
 EzBlock.addBlock(new Block(2, Date.now(), {amount: 5}));
 
-console.log(JSON.stringify(EzBlock, null, 4));
+console.log(JSON.stringify(EzBlock, null, 4) + "\n");
+console.log("Is the blockchain valid?: " + EzBlock.isChainValid() + "\n");
+
+console.log("What if we tamper with a block's data and recalculate the hash?" + "\n");
+EzBlock.chain[1].data = {amount: 12};
+EzBlock.chain[1].hash = EzBlock.chain[1].calculateHash();
+
+console.log("Is the blockchain still valid?: " + EzBlock.isChainValid());

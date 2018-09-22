@@ -1,0 +1,27 @@
+{
+  "name": "ezblock",
+  "version": "1.0.0",
+  "description": "A simple blockchain to learn the how to apply blockchain technology, using a tutorial from SimplyExplained on YouTube",
+  "main": "main.js",
+  "scripts": {
+    "test": "test",
+    "dev": "nodemon src/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PeteXC/EzBlock.git"
+  },
+  "keywords": [
+    "blockchain",
+    "simple"
+  ],
+  "author": "PeterXC",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PeteXC/EzBlock/issues"
+  },
+  "homepage": "https://github.com/PeteXC/EzBlock#readme",
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}

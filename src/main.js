@@ -32,7 +32,11 @@ class Blockchain {
 
     //  Creates a new block in the blockchain
     addBlock(newBlock) {
+
+        //  Each block must know the previous hash
         newBlock.previousHash = this.getLatestBlock().hash;
+
+        //
         newBlock.hash = newBlock.calculateHash();
         this.chain.push(newBlock);
     }
